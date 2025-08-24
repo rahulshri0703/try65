@@ -51,6 +51,12 @@ pipeline {
         }
         }
 
+        stage('Trigger Child Job with Parameters') {
+steps {
+build job: 'myTrial', parameters: [string(name: 'param1', value: 'value1')], wait: true
+}
+}
+
 
     }
     
