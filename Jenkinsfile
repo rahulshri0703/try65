@@ -45,11 +45,11 @@ pipeline {
         }
         }
 
-        stage('Trigger Child Job') {
-        steps {
-        build job: 'myTrial', wait: true
-        }
-        }
+        // stage('Trigger Child Job') {
+        // steps {
+        // build job: 'myTrial', wait: true
+        // }
+        // }
 
         stage('Trigger Child Job with Parameters') {
 steps {
@@ -62,3 +62,28 @@ build job: 'myTrial', parameters: [string(name: 'param1', value: 'value1')], wai
     
     
     }
+
+
+
+// Using Properties File
+
+// Another method is to write parameters to a properties file and read them in the downstream job.
+
+// Upstream Job: Write parameters to a file.
+
+// echo "VERSION=$VERSION" > params.properties
+// Downstream Job: Read parameters from the file.
+
+// pipeline {
+// agent any
+// stages {
+// stage('Read Params') {
+// steps {
+// script {
+// def props = readProperties file: 'params.properties'
+// echo "Version: ${props.VERSION}"
+// }
+// }
+// }
+// }
+// }
