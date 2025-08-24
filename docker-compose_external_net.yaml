@@ -1,0 +1,23 @@
+services:
+
+  app:
+    image: app42
+    container_name: myApp
+    restart: unless-stopped
+    networks:
+       - mynet
+    volumes:
+      - /mnt/c/Users/rs070/OneDrive/Documents/Trial/docker:/app
+    ports:
+      - "4000:3000"
+
+
+networks:
+  mynet:
+    external:
+      name: mynet
+
+
+# external network mynet: docker network create mynet 
+    
+
