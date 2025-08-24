@@ -38,7 +38,7 @@ pipeline {
                                  usernameVariable: 'DOCKER_REGISTRY_USER',
                                   passwordVariable: 'DOCKER_REGISTRY_PWD']]) 
               {
-                sh "docker login -u ${DOCKER_REGISTRY_USER} -p ${DOCKER_REGISTRY_PWD}"
+                sh "echo ${DOCKER_REGISTRY_PWD} | docker login -u ${DOCKER_REGISTRY_USER} --password-stdin"
                 sh "echo success34567"
 
              }
