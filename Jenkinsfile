@@ -44,6 +44,14 @@ pipeline {
              }
         }
         }
+
+        stage('Trigger Child Job') {
+        steps {
+        build job: 'myTrial', wait: true
+        }
+        }
+
+
     }
     
     
