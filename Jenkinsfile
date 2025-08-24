@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+        environment {
+    docker_cred = credentials('dockerCred')
+        }
+
     stages {
         stage('fetch_code') {
             steps{
@@ -25,6 +29,21 @@ pipeline {
                
             }
 }
+
+
+   stage("docker-login3") {
+            steps {
+              withCredentials([[$class: 'UsernamePasswordMultiBinding', 
+                                credentialsId: 'dockerCred',
+                                 usernameVariable: 'DOCKER_REGISTRY_USER',
+                                  passwordVariable: 'DOCKER_REGISTRY_PWD']]) 
+              {
+                sh "docker login -u ${DOCKER_REGISTRY_USER} -p ${DOCKER_REGISTRY_PWD}"
+                sh "echo success34567"
+
+             }
+        }
+        }
     }
     
     
