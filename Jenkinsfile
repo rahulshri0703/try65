@@ -10,9 +10,9 @@ pipeline {
              post {
             success {
                 echo "pulled succesful"
-                // archiveArtifacts  artifacts: "**/*.py"    or src/**.*py
+                archiveArtifacts  artifacts: "**/*.py"    
                 archiveArtifacts  artifacts: "**/*.csv"
-                archiveArtifacts  artifacts: "**/*.pkl"
+                // archiveArtifacts  artifacts: "**/*.pkl"
             }
         }
     }
